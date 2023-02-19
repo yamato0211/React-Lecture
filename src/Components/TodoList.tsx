@@ -1,10 +1,14 @@
 import { useEffect, useState } from "react"
 import Todo from "./Todo"
 
+export type TodoType = {
+    content: string
+}
+
 const TodoList = () => {
-    const data = localStorage.getItem("todos") ? JSON.parse(localStorage.getItem("todos")) : []
-    const [inputText, setInputText] = useState("")
-    const [todos, setTodos] = useState(data)
+    const data = localStorage.getItem("todos") ? JSON.parse(localStorage.getItem("todos") as string) : []
+    const [inputText, setInputText] = useState<string>("")
+    const [todos, setTodos] = useState<TodoType[]>(data)
 
     useEffect(() => {
         const json = JSON.stringify(todos)
