@@ -1,3 +1,5 @@
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+import { IconButton, Stack, Typography } from "@mui/material";
 const Todo = ({content, index, todos, setTodos}) => {
     const handleTodoDelete = () => {
         const newTodos = [...todos]
@@ -5,10 +7,12 @@ const Todo = ({content, index, todos, setTodos}) => {
         setTodos(newTodos)
     }
     return (
-        <div>
-            <p>{content}</p>
-            <button onClick={handleTodoDelete}>完了</button>
-        </div>
+        <Stack spacing={2} direction="row" justifyContent="center">
+            <Typography variant="h6">{content}</Typography>
+            <IconButton onClick={handleTodoDelete} variant="outlined" >
+                <CheckCircleIcon sx={{color:"#55ff55"}}/>
+            </IconButton>
+        </Stack>
     )
 }
 

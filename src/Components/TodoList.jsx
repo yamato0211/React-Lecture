@@ -1,6 +1,7 @@
-import { useEffect, useState } from "react"
-import Todo from "./Todo"
-
+import AddTaskIcon from '@mui/icons-material/AddTask';
+import { Button, Stack, TextField } from "@mui/material";
+import { useEffect, useState } from "react";
+import Todo from "./Todo";
 const TodoList = () => {
     const data = localStorage.getItem("todos") ? JSON.parse(localStorage.getItem("todos")) : []
     const [inputText, setInputText] = useState("")
@@ -27,9 +28,11 @@ const TodoList = () => {
     return (
         <div>
             <h1>TodoList</h1>
-            <input type="text" value={inputText} onChange={(e) => {setInputText(e.target.value)}}/>
-            <button onClick={handleAddTodo}>追加</button>
-            <ul style={{listStyle: "none"}}>
+            <Stack direction="row" spacing={2} justifyContent="center">
+                <TextField type="text" value={inputText} onChange={(e) => {setInputText(e.target.value)}}/>
+                <Button  className=' bg-gradient-to-b from-orange-300 to-orange-500' startIcon={<AddTaskIcon/>} onClick={handleAddTodo} variant="contained">追加</Button>
+            </Stack>
+            <ul style={{ listStyle: "none" }}>
                 {
                     todos.map((item, index) => {
                         return (
