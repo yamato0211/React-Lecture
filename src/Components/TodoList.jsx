@@ -12,12 +12,16 @@ const TodoList = () => {
     }, [todos])
 
     const handleAddTodo = () => {
-        setTodos([
-            ...todos,
-            {
-                content: inputText
-            }
-        ])
+        if(inputText === "") {
+            alert("空文字列は追加できません!!")
+        } else {
+            setTodos([
+                ...todos,
+                {
+                    content: inputText
+                }
+            ])
+        }
         setInputText("")
     }
     return (
